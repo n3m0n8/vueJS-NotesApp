@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css"/>
+    <title>Random User VUEer</title>
+</head>
+<body>
+    <div id="appDOMelement">
+        <!--Note that here we can also inject any template or javascript vanilla directly... this will show up alongside our injected VUE template. best not to mix them though-->
+        <!-- note below that we use v-bind for certain DOM elements like the img's src when pointing that to our vue instance's {picture} object property. When using bind, we no longer use the {{curlies}} to pickout that binding, it is done by v-bind. Using v-bind is not necessary for other DOM elements like text (p/h1/h2 etc). not also the shorthand v-bind: syntax used on the image alt tag dom childElement which is just : 
+        note that Class is also shorthand vbound-->
+        <img :class="gender" v-bind:src="picture" :alt="`{{firstName}}&nbsp{{lastName}}`">
+        <h1>Hi {{firstName}}&nbsp {{lastName}}</h1>
+        <h3>Email: {{email}}</h3>
+        <!--button also deploys gender class whic changes color. Also add an event listener easily with vue-on:click which calls meth to switch user object array that data is being fetched from to display to frontend container vars -->
+        <button v-on:click="fetchNewUsr()" :class="gender">Vue Random Profile</button>
+    </div>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
+
+<!--
+<div id="app">
+    <img
+      v-bind:src="picture"
+      :alt="`${firstName} ${lastName}`"
+      :class="gender"
+    />
+    <h1>{{firstName}} {{lastName}}</h1>
+    <h3>Email: {{email}}</h3>
+    <button :class="gender" @click="getUser()">Get Random User</button>
+  </div>
+  -->
